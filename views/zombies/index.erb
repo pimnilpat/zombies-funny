@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+  <!--#include file="header.html"--> 	
+  <head>	  	  
+	  <title><%=@title%></title>	  
+  </head>
+  <body>   	    	
+  	<div class="container-fluid">
+	  <div class="row-fluid">
+	    <div class="span2">
+	      <!--Sidebar content-->	      
+	    </div>
+	    <div class="span10">
+	      <!--Body content-->
+	        <h4>Found : <%=@zombies.count%> zombies</h4>
+	      	<table class="table table-bordered table-responsive table-striped table-hover">  
+			    <tr>
+			    	<th>Name</th>
+			    	<th>Graveyard</th>   		
+			    </tr>  	
+			  	<% @zombies.each do |z|%>
+			  		<tr>
+			  			<td><%=z.name%></td>
+			  			<td><%=z.graveyard%></td>
+			  		</tr>  		
+			  	<% end %> 
+	  		</table> 
+	  		<div>
+  				<span style="color: blue">Update: <%=Time.now.strftime("%Y-%m-%d %H:%M:%S")%></span>
+  			</div>	
+  			<br />
+		  	<div>
+		  		<fieldset>
+		  		<legend>Create Zombie</legend>
+		  		<form method="POST" action="/posts" class="form-horizontal">		  			
+		  				<div class="control-group">
+					    	<label class="control-label" for="inputEmail">Email</label>
+						    <div class="controls">
+						      <input type="text" id="inputEmail" placeholder="Email">
+						    </div>
+					    </div>
+					    <div class="control-group">
+						    <label class="control-label" for="inputPassword">Password</label>
+						    <div class="controls">
+						      <input type="password" id="inputPassword" placeholder="Password">
+						    </div>
+						 </div>
+		  				Name: <input type="text" name="post[name]" />
+			     		Graveyard:<input type="text" name="post[graveyard]" />
+			     		<input type="submit" value="Submit" class="btn btn-success"/>		  			     		
+				</form>
+				</fieldset>
+	  		</div>	  		
+	    </div>
+	  </div>
+	</div>  	
+  	
+  </body>
+</html>
